@@ -36,7 +36,7 @@ class MemcachedClient(object):
 
     vbucketId = 0
 
-    def __init__(self, host='127.0.0.1', port=11211, family=socket.AF_INET):
+    def __init__(self, host='127.0.0.1', port=11210, family=socket.AF_INET):
         self.host = host
         self.port = port
         self.s = socket.socket(family, socket.SOCK_STREAM)
