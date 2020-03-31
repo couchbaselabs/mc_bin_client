@@ -100,11 +100,11 @@ class MemcachedError(Exception, metaclass=MemcachedErrorMetaclass):
 
     def __init__(self, status, msg):
         supermsg='Memcached error #' + repr(status)
-        if msg: supermsg += ":  " + msg.decode("utf-8")
+        if msg: supermsg += ":  " + msg
         Exception.__init__(self, supermsg)
 
         self.status=status
-        self.msg=msg.decode("utf-8")
+        self.msg=msg
 
     def __repr__(self):
         return "<MemcachedError #%d ``%s''>" % (self.status, self.msg)
@@ -231,7 +231,7 @@ class MemcachedClient(object):
         msg=struct.pack(fmt, magic,
             cmd, len(key), len(extraHeader), dtype, vbucketId,
                 len(key) + len(extraHeader) + len(val), opaque, cas)
-        self.s.sendall(msg + to_bytes(extraHeader) + to_bytes(key) + to_bytes(val))
+        self.s.sendall(msg + extraHeader + to_bytes(key) + to_bytes(val))
 
     def _socketRecv(self, amount):
         ready = select.select([self.s], [], [], 30)
