@@ -685,7 +685,7 @@ class MemcachedClient(object):
         _, _, errmap = self._doCmd(memcacheConstants.CMD_GET_ERROR_MAP, '',
                     struct.pack("!H", self.error_map_version))
 
-        errmap = json.loads(errmap)
+        errmap = json.loads(errmap.decode('utf-8'))
 
         d = {}
 
