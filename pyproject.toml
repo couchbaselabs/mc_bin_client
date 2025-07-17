@@ -1,0 +1,20 @@
+[build-system]
+requires = [
+    "setuptools",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mc_bin_client"
+version = "1.0.1"
+authors = [
+    { name = "Dustin Sallings", email = "dustin@spy.net" },
+]
+description = "Binary memcached client"
+
+[tool.setuptools]
+packages = [
+    "mc_bin_client",
+]
+include-package-data = true
